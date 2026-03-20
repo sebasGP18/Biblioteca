@@ -1,0 +1,132 @@
+class Material:
+    def __init__(self, idMaterial, titulo, añoPublicacion):
+        self.idMaterial = idMaterial
+        self.titulo = titulo
+        self.añoPublicacion = añoPublicacion
+        self.disponible = True
+
+
+class Libro(Material):
+    def __init__(self, idMaterial, titulo, añoPublicacion, autor, isbn, genero):
+        Material.__init__(self, idMaterial, titulo, añoPublicacion)
+        self.autor = autor
+        self.isbn = isbn
+        self.genero = genero
+
+
+class Revista(Material):
+    def __init__(self, idMaterial, titulo, añoPublicacion, edicion, periodicidad):
+        Material.__init__(self, idMaterial, titulo, añoPublicacion)
+        self.edicion = edicion
+        self.periodicidad = periodicidad
+
+
+class MaterialDigital(Material):
+    def __init__(self, idMaterial, titulo, añoPublicacion, tipoArchivo, urlDescarga, tamañoMB):
+        Material.__init__(self, idMaterial, titulo, añoPublicacion)
+        self.tipoArchivo = tipoArchivo
+        self.urlDescarga = urlDescarga
+        self.tamañoMB = tamañoMB
+
+
+
+class Persona:
+    def __init__(self, nombre):
+        self.nombre = nombre
+
+
+class Usuario(Persona):
+    def __init__(self, nombre, limitePrestamos):
+        Persona.__init__(self, nombre)
+        self.limitePrestamos = limitePrestamos
+        self.listaActiva = []
+
+
+class Bibliotecario(Persona):
+    def __init__(self, nombre):
+        Persona.__init__(self, nombre)
+
+    def gestionarPrestamo(self, usuario, material):
+        if material.disponible == True:
+            if len(usuario.listaActiva) < usuario.limitePrestamos:
+
+                prestamo = Prestamo(
+                    len(usuario.listaActiva) + 1,
+                    "01/01/2026",
+                    "08/01/2026",
+                    usuario,
+                    material
+                )
+
+                usuario.listaActiva.append(prestamo)
+                material.disponible = False
+                print("Prestamo realizado")
+                return prestamo
+
+        print("No se pudo prestar")
+        return None
+
+    def transferirMaterial(self, material, origen, destino):
+        for m in origen.catalogoLocal:
+            if m == material:
+                origen.catalogoLocal.remove(m)
+                destino.catalogoLocal.append(m)
+                print("Material transferido")
+
+
+class Sucursal:
+    def __init__(self, idSucursal, nombre):
+        self.idSucursal = idSucursal
+        self.nombre = nombre
+        self.catalogoLocal = []
+
+    def agregarMaterial(self, material):
+        self.catalogoLocal.append(material)
+
+
+
+class Prestamo:
+    def __init__(self, idPrestamo, fechaInicio, fechaDevolucion, usuario, material):
+        self.idPrestamo = idPrestamo
+        self.fechaInicio = fechaInicio
+        self.fechaDevolucion = fechaDevolucion
+        self.usuario = usuario
+        self.material = material
+
+
+class Penalizacion:
+    def __init__(self, monto, motivo):
+        self.monto = monto
+        self.motivo = motivo
+        self.pagada = False
+
+    def calcularMulta(self, dias):
+        self.monto = dias * 10
+        return self.monto
+
+    def bloquearUsuario(self, usuario):
+        usuario.limitePrestamos = 0
+        print("Usuario bloqueado")
+
+
+
+class Catalogo:
+    def __init__(self, sucursales):
+        self.sucursales = sucursales
+
+    def buscarPorAutor(self, autor):
+        lista = []
+        for s in self.sucursales:
+            for m in s.catalogoLocal:
+                if type(m) == Libro:
+                    if m.autor == autor:
+                        lista.append(m.titulo)
+        return lista
+
+    def buscarEnTodasSucursales(self, titulo):
+        lista = []
+        for s in self.sucursales:
+            for m in s.catalogoLocal:
+                if titulo in m.titulo:
+                    lista.append(m.titulo + " - " + s.nombre)
+        return lista
