@@ -1,0 +1,146 @@
+from biblioteca import *
+
+
+m1 = Libro(1, "Cien años de soledad", 1967, "Garcia Marquez", "101", "Novela")
+m2 = Libro(2, "El principito", 1943, "Antoine de Saint-Exupery", "102", "Infantil")
+m3 = Libro(3, "It", 1986, "Stephen King", "103", "Terror")
+m4 = Libro(4, "Dracula", 1897, "Bram Stoker", "104", "Terror")
+m5 = Libro(5, "Don Quijote", 1605, "Cervantes", "105", "Clasico")
+m6 = Libro(6, "El Hobbit", 1937, "Tolkien", "106", "Fantasia")
+m7 = Libro(7, "1984", 1949, "George Orwell", "107", "Distopia")
+m8 = Libro(8, "Fahrenheit 451", 1953, "Ray Bradbury", "108", "Ciencia Ficcion")
+m9 = Libro(9, "Orgullo y prejuicio", 1813, "Jane Austen", "109", "Romance")
+m10 = Libro(10, "Hamlet", 1603, "Shakespeare", "110", "Drama")
+
+r1 = Revista(11, "National Geographic", 2023, "Edicion Enero", "Mensual")
+r2 = Revista(12, "Forbes", 2024, "Edicion Febrero", "Mensual")
+r3 = Revista(13, "Time", 2025, "Edicion Marzo", "Semanal")
+r4 = Revista(14, "Muy Interesante", 2023, "Edicion Abril", "Mensual")
+r5 = Revista(15, "Scientific American", 2022, "Edicion Mayo", "Mensual")
+r6 = Revista(16, "PC Magazine", 2023, "Edicion Junio", "Mensual")
+r7 = Revista(17, "Auto Bild", 2024, "Edicion Julio", "Mensual")
+r8 = Revista(18, "Vogue", 2025, "Edicion Agosto", "Mensual")
+r9 = Revista(19, "Rolling Stone", 2023, "Edicion Septiembre", "Mensual")
+r10 = Revista(20, "Nature", 2024, "Edicion Octubre", "Mensual")
+
+d1 = MaterialDigital(21, "Curso Python", 2022, "PDF", "url", 50)
+d2 = MaterialDigital(22, "Manual Java", 2021, "PDF", "url", 40)
+d3 = MaterialDigital(23, "Curso HTML", 2023, "PDF", "url", 30)
+d4 = MaterialDigital(24, "Tutorial CSS", 2023, "PDF", "url", 20)
+d5 = MaterialDigital(25, "Curso SQL", 2022, "PDF", "url", 35)
+d6 = MaterialDigital(26, "Guia Linux", 2021, "PDF", "url", 45)
+d7 = MaterialDigital(27, "Curso C++", 2022, "PDF", "url", 60)
+d8 = MaterialDigital(28, "Manual Redes", 2023, "PDF", "url", 25)
+d9 = MaterialDigital(29, "Curso JavaScript", 2024, "PDF", "url", 55)
+d10 = MaterialDigital(30, "Guia Git", 2023, "PDF", "url", 15)
+
+
+
+print("LIBROS")
+print(m1.titulo, m1.autor)
+print(m2.titulo, m2.autor)
+print(m3.titulo, m3.autor)
+print(m4.titulo, m4.autor)
+print(m5.titulo, m5.autor)
+print(m6.titulo, m6.autor)
+print(m7.titulo, m7.autor)
+print(m8.titulo, m8.autor)
+print(m9.titulo, m9.autor)
+print(m10.titulo, m10.autor)
+
+print()
+
+print("REVISTAS")
+print(r1.titulo, r1.edicion)
+print(r2.titulo, r2.edicion)
+print(r3.titulo, r3.edicion)
+print(r4.titulo, r4.edicion)
+print(r5.titulo, r5.edicion)
+print(r6.titulo, r6.edicion)
+print(r7.titulo, r7.edicion)
+print(r8.titulo, r8.edicion)
+print(r9.titulo, r9.edicion)
+print(r10.titulo, r10.edicion)
+
+print()
+
+print("DIGITALES")
+print(d1.titulo, d1.tipoArchivo)
+print(d2.titulo, d2.tipoArchivo)
+print(d3.titulo, d3.tipoArchivo)
+print(d4.titulo, d4.tipoArchivo)
+print(d5.titulo, d5.tipoArchivo)
+print(d6.titulo, d6.tipoArchivo)
+print(d7.titulo, d7.tipoArchivo)
+print(d8.titulo, d8.tipoArchivo)
+print(d9.titulo, d9.tipoArchivo)
+print(d10.titulo, d10.tipoArchivo)
+
+print()
+
+print("USUARIOS")
+u1 = Usuario("Juan", 2)
+u2 = Usuario("Maria", 2)
+u3 = Usuario("Luis", 2)
+u4 = Usuario("Ana", 2)
+u5 = Usuario("Pedro", 2)
+u6 = Usuario("Sofia", 2)
+u7 = Usuario("Carlos", 2)
+u8 = Usuario("Laura", 2)
+u9 = Usuario("Diego", 2)
+u10 = Usuario("Valeria", 2)
+
+print(u1.nombre, u1.limitePrestamos)
+print(u2.nombre, u2.limitePrestamos)
+print(u3.nombre, u3.limitePrestamos)
+print(u4.nombre, u4.limitePrestamos)
+print(u5.nombre, u5.limitePrestamos)
+print(u6.nombre, u6.limitePrestamos)
+print(u7.nombre, u7.limitePrestamos)
+print(u8.nombre, u8.limitePrestamos)
+print(u9.nombre, u9.limitePrestamos)
+print(u10.nombre, u10.limitePrestamos)
+
+print()
+
+s1 = Sucursal(1, "Centro")
+s2 = Sucursal(2, "Norte")
+
+s1.agregarMaterial(m1)
+s1.agregarMaterial(m2)
+s1.agregarMaterial(m3)
+s1.agregarMaterial(m4)
+s1.agregarMaterial(m5)
+
+s2.agregarMaterial(m6)
+s2.agregarMaterial(m7)
+s2.agregarMaterial(m8)
+s2.agregarMaterial(m9)
+s2.agregarMaterial(m10)
+
+print("Materiales en sucursal 1:", len(s1.catalogoLocal))
+print("Materiales en sucursal 2:", len(s2.catalogoLocal))
+
+print()
+
+biblio = Bibliotecario("Carlos")
+
+biblio.gestionarPrestamo(u1, m1)
+biblio.gestionarPrestamo(u1, m2)
+biblio.gestionarPrestamo(u1, m3)
+
+print()
+
+biblio.transferirMaterial(m1, s1, s2)
+
+print()
+
+catalogo = Catalogo([s1, s2])
+print(catalogo.buscarPorAutor("Stephen King"))
+print(catalogo.buscarEnTodasSucursales("Curso"))
+
+print()
+
+penal = Penalizacion(0, "Retraso")
+print("Multa:", penal.calcularMulta(3))
+penal.bloquearUsuario(u1)
